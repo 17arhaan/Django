@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link rel="stylesheet" href="{% static 'Hostel_app/css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'Hostel_app:home' %}">Home</a>
+        <a href="{% url 'Hostel_app:page1' %}">Add Student</a>
+    </nav>
+    <div class="student-list-container">
+        <h1>Student List by Hostel</h1>
+        {% for hostel in hostel_data %}
+        <div class="hostel-section">
+            <div class="hostel-header">
+                <h2 class="hostel-name">{{ hostel.hostel }}</h2>
+                <span class="student-count">{{ hostel.student_count }} Students</span>
+            </div>
+            <table class="student-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Roll No</th>
+                        <th>Email</th>
+                        <th>Room No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students_by_hostel|get_item:hostel.hostel %}
+                    <tr>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.roll_no }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.room_no }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
