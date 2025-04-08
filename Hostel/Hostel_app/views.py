@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Student
 from django.db.models import Count
+from .forms import StudentForm
 
 # Create your views here.
 
@@ -9,21 +10,14 @@ def home(request):
 
 def page1(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        roll_no = request.POST.get('rollno')
-        hostel = request.POST.get('hostel')
-        room_no = request.POST.get('roomno')
-        
-        Student.objects.create(
-            name=name,
-            email=email,
-            roll_no=roll_no,
-            hostel=hostel,
-            room_no=room_no
-        )
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('Hostel_app:page2')
+    else:
+        form = StudentForm()
     
-    return render(request, 'Hostel_app/page1.html')
+    return render(request, 'Hostel_app/page1.html', {'form': form})
 
 def page2(request):
     # Get all students grouped by hostel with count
@@ -31,11 +25,8 @@ def page2(request):
         student_count=Count('id')
     ).order_by('hostel')
     
-    # Get all students for each hostel
-    students_by_hostel = {}
-    for hostel in hostel_data:
-        students = Student.objects.filter(hostel=hostel['hostel']).order_by('name')
-        students_by_hostel[hostel['hostel']] = students
+    # Get all students ordered by hostel
+    students_by_hostel = Student.objects.all().order_by('hostel', 'name')
     
     context = {
         'hostel_data': hostel_data,

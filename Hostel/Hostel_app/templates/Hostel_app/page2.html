@@ -16,10 +16,7 @@
         <h1>Student List by Hostel</h1>
         {% for hostel in hostel_data %}
         <div class="hostel-section">
-            <div class="hostel-header">
-                <h2 class="hostel-name">{{ hostel.hostel }}</h2>
-                <span class="student-count">{{ hostel.student_count }} Students</span>
-            </div>
+            <h2>{{ hostel.hostel }} ({{ hostel.student_count }} students)</h2>
             <table class="student-table">
                 <thead>
                     <tr>
@@ -30,13 +27,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for student in students_by_hostel|get_item:hostel.hostel %}
-                    <tr>
-                        <td>{{ student.name }}</td>
-                        <td>{{ student.roll_no }}</td>
-                        <td>{{ student.email }}</td>
-                        <td>{{ student.room_no }}</td>
-                    </tr>
+                    {% for student in students_by_hostel %}
+                        {% if student.hostel == hostel.hostel %}
+                        <tr>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.roll_no }}</td>
+                            <td>{{ student.email }}</td>
+                            <td>{{ student.room_no }}</td>
+                        </tr>
+                        {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
