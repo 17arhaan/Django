@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Management System</title>
+    <link rel="stylesheet" href="{% static 'Hostel_app/css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/page1/">Add Student</a>
+        <a href="/page2/">View Students</a>
+    </nav>
+
+    <div class="content">
+        <h1>Welcome to Hostel Management System</h1>
+        <p>This system helps you manage student hostel registrations and view student details.</p>
+        
+        <div class="features">
+            <h2>Features:</h2>
+            <ul>
+                <li>Register new students</li>
+                <li>View all registered students</li>
+                <li>Organize students by hostel</li>
+                <li>Manage room allocations</li>
+            </ul>
+        </div>
+
+        <div class="quick-links">
+            <h2>Quick Links:</h2>
+            <ul>
+                <li><a href="/page1/" class="button">Register New Student</a></li>
+                <li><a href="/page2/" class="button">View All Students</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

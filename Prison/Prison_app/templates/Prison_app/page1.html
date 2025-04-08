@@ -1,0 +1,13 @@
+{% extends 'Prison_app/index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Add New Prisoner</h1>
+    <form method="POST" class="prisoner-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-btn">Add Prisoner</button>
+    </form>
+</div>
+{% endblock %}

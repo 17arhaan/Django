@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Prison Management System</title>
+</head>
+<body>
+    <nav>   
+        <a href="{% url 'Prison_app:index' %}">Home</a>
+        <a href="{% url 'Prison_app:page1' %}">Add Prisoner</a>
+        <a href="{% url 'Prison_app:page2' %}">View Prisoners</a>
+    </nav>
+    {% block content %}
+    <div class="container">
+        <h1>Welcome to Prison Management System</h1>
+        <div class="welcome-text">
+            <p>Select an option from the navigation menu above to begin.</p>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% extends 'Prison_app/index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Prison Management System</h1>
+    
+    <div class="stats">
+        <h2>Prison Statistics</h2>
+        <p>Total Prisoners: {{ total_prisoners }}</p>
+        
+        <ul>
+        {% for block in prisoners_by_block %}
+            <li class="block-{{ block.block_number }}">
+                Block {{ block.block_number }}: {{ block.count }} prisoners
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <div class="prisoners-list">
+        <h2>Prisoners List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Block</th>
+                    <th>Cell</th>
+                    <th>Admission Date</th>
+                    <th>Release Date</th>
+                    <th>Crime</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prisoner in prisoners %}
+                <tr class="block-{{ prisoner.block_number }}">
+                    <td>{{ prisoner.prisoner_id }}</td>
+                    <td>{{ prisoner.name }}</td>
+                    <td>{{ prisoner.age }}</td>
+                    <td>{{ prisoner.block_number }}</td>
+                    <td>{{ prisoner.cell_number }}</td>
+                    <td>{{ prisoner.admission_date }}</td>
+                    <td>{{ prisoner.release_date|default:"N/A" }}</td>
+                    <td>{{ prisoner.crime }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
