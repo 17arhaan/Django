@@ -1,5 +1,5 @@
 from django.db import models
-
+from . mod
 # Create your models here.
 class Prisoner(models.Model):
     BLOCK_CHOICES =[
