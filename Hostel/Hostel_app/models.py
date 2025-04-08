@@ -4,7 +4,7 @@ from django.db import models
 
 class Student(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(null=True, blank=True)
     roll_no = models.IntegerField()
     hostel = models.CharField(max_length=50)
     room_no = models.CharField(max_length=10)
