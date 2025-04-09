@@ -8,20 +8,32 @@
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
 <body>
-    <h1>
-        Delhi Public School
-    </h1>
-    <nav class="navbar">
-        <ul>
-            <li>
-                <a href="{% url 'Classroom_app:page1' %}">Add Student</a>
-            </li>
-            <li>
-                <a href="{% url 'Classroom_app:page2' %}">View Students</a>
-            </li>
-        </ul>
-    </nav>
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+        <h1>Delhi Public School</h1>
+        <nav class="navbar">
+            <ul>
+                <li>
+                    <a href="{% url 'Classroom_app:page1' %}">Add Student</a>
+                </li>
+                <li>
+                    <a href="{% url 'Classroom_app:page2' %}">View Students</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="content">
+            <h2>Welcome to Delhi Public School</h2>
+            <p>Manage your classroom efficiently with our student management system.</p>
+            <div class="features">
+                <div class="feature">
+                    <h3>Add Students</h3>
+                    <p>Add new students to your classroom with their details.</p>
+                </div>
+                <div class="feature">
+                    <h3>View Students</h3>
+                    <p>View and manage all students in your classroom.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href = "{% static 'css/styles.css' %}" rel = "stylesheet">
+    <title>Summary</title>
+</head>
+<body>
+    <h1>Summary</h1>
+    <h2>Total Books Bought : {{total_books}}</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{book.book_name}}</td>
+            <td>{{book.book_genre}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <ul>
+        <li><a href = "{% url 'book_app:index' %}">Home</a></li>
+        <li><a href = "{% url 'book_app:page1' %}">Book Store</a></li>
+    </ul>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

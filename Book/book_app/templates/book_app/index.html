@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    {% load static %}
+    <link href = "{% static 'css/styles.css' %}" rel = "stylesheet">
+</head>
+<body>
+    <h1>Book Store</h1>
+    <ul>
+        <li><a href = "{% url 'book_app:page1' %}">Buy Book</a></li>
+        <li><a href = "{% url 'book_app:page2' %}">Books Bought</a></li>
+    </ul>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

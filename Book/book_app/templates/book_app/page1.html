@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href = "{% static 'css/styles.css' %}" rel = "stylesheet">
+    <title>Buy Books</title>
+</head>
+<body>
+    <h1>Book Store</h1>
+    <form method ="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type = "submit">Submit</button>
+    </form>
+    <ul>
+        <li><a href = "{% url 'book_app:index' %}">Home</a></li>
+        <li><a href = "{% url 'book_app:page2' %}">Books Bought</a></li>
+    </ul>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
